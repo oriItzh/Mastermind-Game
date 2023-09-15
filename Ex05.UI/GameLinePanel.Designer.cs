@@ -1,0 +1,160 @@
+﻿namespace Ex05.UI
+{
+    partial class GameLinePanel
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            buttonSubmit = new Button();
+            buttonScore1 = new Button();
+            buttonScore2 = new Button();
+            buttonScore3 = new Button();
+            buttonScore4 = new Button();
+            buttonColors1 = new ButtonColors();
+            buttonColors2 = new ButtonColors();
+            buttonColors3 = new ButtonColors();
+            buttonColors4 = new ButtonColors();
+            SuspendLayout();
+            // 
+            // buttonSubmit
+            // 
+            buttonSubmit.Location = new Point(703, 56);
+            buttonSubmit.Name = "buttonSubmit";
+            buttonSubmit.Size = new Size(146, 61);
+            buttonSubmit.TabIndex = 1;
+            buttonSubmit.Text = "-->>";
+            buttonSubmit.UseVisualStyleBackColor = true;
+            buttonSubmit.Click += ButtonSubmit_Click;
+            // 
+            // buttonScore1
+            // 
+            buttonScore1.Location = new Point(884, 90);
+            buttonScore1.Name = "buttonScore1";
+            buttonScore1.Size = new Size(50, 50);
+            buttonScore1.TabIndex = 2;
+            buttonScore1.UseVisualStyleBackColor = true;
+            // 
+            // buttonScore2
+            // 
+            buttonScore2.Location = new Point(884, 30);
+            buttonScore2.Name = "buttonScore2";
+            buttonScore2.Size = new Size(50, 50);
+            buttonScore2.TabIndex = 2;
+            buttonScore2.UseVisualStyleBackColor = true;
+            // 
+            // buttonScore3
+            // 
+            buttonScore3.Location = new Point(951, 90);
+            buttonScore3.Name = "buttonScore3";
+            buttonScore3.Size = new Size(50, 50);
+            buttonScore3.TabIndex = 2;
+            buttonScore3.UseVisualStyleBackColor = true;
+            // 
+            // buttonScore4
+            // 
+            buttonScore4.Location = new Point(950, 30);
+            buttonScore4.Name = "buttonScore4";
+            buttonScore4.Size = new Size(50, 50);
+            buttonScore4.TabIndex = 2;
+            buttonScore4.UseVisualStyleBackColor = true;
+            // 
+            // buttonColors1
+            // 
+            buttonColors1.Location = new Point(50, 30);
+            buttonColors1.Name = "buttonColors1";
+            buttonColors1.SelectedButton = null;
+            buttonColors1.Size = new Size(120, 100);
+            buttonColors1.TabIndex = 3;
+            buttonColors1.UseVisualStyleBackColor = true;
+            // 
+            // buttonColors2
+            // 
+            buttonColors2.Location = new Point(200, 30);
+            buttonColors2.Name = "buttonColors2";
+            buttonColors2.SelectedButton = null;
+            buttonColors2.Size = new Size(120, 100);
+            buttonColors2.TabIndex = 4;
+            buttonColors2.UseVisualStyleBackColor = true;
+            // 
+            // buttonColors3
+            // 
+            buttonColors3.Location = new Point(350, 30);
+            buttonColors3.Name = "buttonColors3";
+            buttonColors3.SelectedButton = null;
+            buttonColors3.Size = new Size(120, 100);
+            buttonColors3.TabIndex = 3;
+            buttonColors3.UseVisualStyleBackColor = true;
+            // 
+            // buttonColors4
+            // 
+            buttonColors4.Location = new Point(500, 30);
+            buttonColors4.Name = "buttonColors4";
+            buttonColors4.SelectedButton = null;
+            buttonColors4.Size = new Size(120, 100);
+            buttonColors4.TabIndex = 4;
+            buttonColors4.UseVisualStyleBackColor = true;
+            // 
+            // GameLinePanel
+            // 
+            AutoScaleDimensions = new SizeF(20F, 48F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(buttonColors1);
+            Controls.Add(buttonColors2);
+            Controls.Add(buttonColors3);
+            Controls.Add(buttonColors4);
+            Controls.Add(buttonScore2);
+            Controls.Add(buttonScore4);
+            Controls.Add(buttonScore3);
+            Controls.Add(buttonScore1);
+            Controls.Add(buttonSubmit);
+            Name = "GameLinePanel";
+            Size = new Size(1050, 180);
+            Load += GameLinePanel_Load;
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        //public delegate FormGame.BingoCount checkGuess(List<Color> guess);
+
+        public event EventHandler Submitted;
+        public const int k_ScoreBoxSize = 50;
+        private List<Color> m_TurnGuess;
+        // TODO export to another class
+        private List<Color> m_correctGuess;
+        private readonly FormColors r_FormColors;
+        private ButtonColors buttonColors1;
+        private ButtonColors buttonColors2;
+        private ButtonColors buttonColors3;
+        private ButtonColors buttonColors4;
+        private Button buttonSubmit;
+        private Button buttonScore1;
+        private Button buttonScore2;
+        private Button buttonScore3;
+        private Button buttonScore4;
+
+    }
+}
