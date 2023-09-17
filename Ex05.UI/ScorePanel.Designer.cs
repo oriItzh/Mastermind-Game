@@ -97,7 +97,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private List<PictureBox> m_pictureBoxes;
+        private readonly List<PictureBox> r_pictureBoxes;
         private readonly ScoreBoard r_ScoreBoard;
 
     }

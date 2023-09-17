@@ -12,18 +12,22 @@ namespace Ex05.UI
 {
     public partial class GameLinePanel : UserControl
     {
+        public const string k_InsufficientInputError = "Must enter all 4 fields before submission";
         public GameLinePanel()
         {
-            //r_correctGuess = correctGuess;
             r_FormColors = new FormColors();
             r_TurnGuess = new List<Color>();
             InitializeComponent();
             SetButtonColors();
         }
 
+        public bool IsAWin()
+        {
+            return ScorePanel.ScoreCounter.Bull == 4;
+        }
+
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
-
             if (UpdateTurnGuess())
             {
                 DisableAllButtons();
@@ -31,7 +35,7 @@ namespace Ex05.UI
             }
             else
             {
-                // TODO SHOW MESSAGE ERROR 
+                new FormError(k_InsufficientInputError).ShowDialog();
             }
         }
 
@@ -110,6 +114,5 @@ namespace Ex05.UI
                 }
             }
         }
-
     }
 }

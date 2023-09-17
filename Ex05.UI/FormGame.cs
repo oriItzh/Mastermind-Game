@@ -2,6 +2,8 @@ namespace Ex05.UI
 {
     public partial class FormGame : Form
     {
+        public const string k_GameOverMessage = "No more guesses allowed! you Lost";
+
         public void CheckGuess(GameLinePanel i_GameLine)
         {
             List<Color> currentGuess = new List<Color>();
@@ -22,49 +24,21 @@ namespace Ex05.UI
 
             for (int i = 0; i < currentGuess.Count; i++)
             {
-                if (currentGuess[i] == m_GamePin.Pin[i])
+                if (currentGuess[i] == r_GamePin.Pin[i])
                 {
                     i_GameLine.ScorePanel.ScoreCounter.Bull++;
                 }
-                else if (m_GamePin.Pin.Contains(currentGuess[i]))
+                else if (r_GamePin.Pin.Contains(currentGuess[i]))
                 {
                     i_GameLine.ScorePanel.ScoreCounter.Cow++;
                 }
             }
         }
 
-        //ScoreBoard CheckGuess(List<Color> guess)
-        //{
-        //    if (guess.Count != m_GamePin.Pin.Count)
-        //    {
-        //        throw new ArgumentException("Must enter all 4 fields");
-        //    }
-
-        //    var scoreCount = new ScoreBoard
-        //    {
-        //        Bull = 0,
-        //        Cow = 0
-        //    };
-
-        //    for (int i = 0; i < guess.Count; ++i)
-        //    {
-        //        if (guess[i] == m_GamePin.Pin[i])
-        //        {
-        //            scoreCount.Bull++;
-        //        }
-        //        else if (guess.Contains(guess[i]))
-        //        {
-        //            scoreCount.Cow++;
-        //        }
-        //    }
-
-        //    return scoreCount;
-        //}
-
         public FormGame(int i_NumberOfGuesses)
         {
-            gameLinePanels = new List<GameLinePanel>();
-            m_GamePin = new GamePin();
+            r_GameLinePanels = new List<GameLinePanel>();
+            r_GamePin = new GamePin();
             int numberOfColors = FormColors.sr_optionalColors.Length;
             SetGamePin(numberOfColors);
             m_CurrentRound = 0;
@@ -87,7 +61,7 @@ namespace Ex05.UI
                 gameLineControl.Size = new Size(k_ControlWidth, k_ControlHeight);
                 gameLineControl.TabIndex = i;
                 gameLineControl.Submitted += GameLine_Submitted;
-                gameLinePanels.Add(gameLineControl);
+                r_GameLinePanels.Add(gameLineControl);
 
                 if (i > 0)
                 {
@@ -107,23 +81,56 @@ namespace Ex05.UI
                 try
                 {
                     CheckGuess(CurrentTurn);
-                    m_CurrentRound++;
                     CurrentTurn.ScorePanel.DisplayResult();
-                    if (m_CurrentRound < gameLinePanels.Count)
+                    m_CurrentRound++;
+                    if (CurrentTurn.IsAWin())
                     {
-                        gameLinePanels[m_CurrentRound].EnableAllButtons();
+                        DoWhenWonTheGame();
                     }
                     else
                     {
-                        //GameOver - To be implemented
+                        if (!IsGameOver())
+                        {
+                            r_GameLinePanels[m_CurrentRound].EnableAllButtons();
+                        }
+                        else
+                        {
+                            DoWhenGameOver();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    new FormError(ex.Message).ShowDialog(); //To be Implemented
+                    new FormError(ex.Message).ShowDialog();
                 }
             }
-            m_GamePin.Display();    // Debugging purpose
+        }
+
+        private void DoWhenGameOver()
+        {
+            DoWhenGameEnds(k_GameOverMessage);
+        }
+
+        private void DoWhenGameEnds(string i_Message)
+        {
+            r_GamePin.Display();
+            FormNewGame formNewGame = new FormNewGame(i_Message);
+
+            if (formNewGame.ShowDialog() == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Continue;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
+        }
+
+        private void DoWhenWonTheGame()
+        {
+            string message = string.Format(
+                "Congratulations! you have cracked the code after {0} guesses", m_CurrentRound);
+            DoWhenGameEnds(message);
         }
 
         private void SetGamePin(int numberOfColors)
@@ -133,9 +140,14 @@ namespace Ex05.UI
             for (int i = 0; i < k_PinLength; ++i)
             {
                 Color colorToAdd = (Color)FormColors.sr_optionalColors[randomNumbers[i]];
-                m_GamePin.Pin.Add(colorToAdd);
-                
+                r_GamePin.Pin.Add(colorToAdd);
+
             }
+        }
+
+        private bool IsGameOver()
+        {
+            return m_CurrentRound >= r_GameLinePanels.Count;
         }
     }
 }

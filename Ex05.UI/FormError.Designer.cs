@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             buttonOk = new Button();
-            errorProvider1 = new ErrorProvider(components);
             textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // buttonOk
@@ -44,10 +41,6 @@
             buttonOk.TabIndex = 0;
             buttonOk.Text = "Ok";
             buttonOk.UseVisualStyleBackColor = true;
-            // 
-            // errorProvider1
-            // 
-            errorProvider1.ContainerControl = this;
             // 
             // textBox1
             // 
@@ -68,8 +61,8 @@
             Controls.Add(textBox1);
             Controls.Add(buttonOk);
             Name = "FormError";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Error";
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -77,7 +70,6 @@
         #endregion
 
         private Button buttonOk;
-        private ErrorProvider errorProvider1;
         private TextBox textBox1;
     }
 }

@@ -19,7 +19,6 @@ namespace Ex05.UI
 
         public FormError(string i_Message) : this()
         {
-            errorProvider1.SetError(this, i_Message);
             textBox1.Text = i_Message;
         }
     }

@@ -1,6 +1,6 @@
 namespace Ex05.UI
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -18,20 +18,26 @@ namespace Ex05.UI
         private static void PlayNewGame()
         {
             bool wantsToPlay = true;
-            while (wantsToPlay)
+            int numOfGuesses;
+
+            while (wantsToPlay && TryGetNumOfGuesses(out numOfGuesses))
             {
-                int numOfChances = GetNumOfChances();
-                FormGame formGame = new FormGame(numOfChances);
-                formGame.ShowDialog();
-                wantsToPlay = formGame.DialogResult == DialogResult.Continue;
+                FormGame formGame = new FormGame(numOfGuesses);
+                wantsToPlay = formGame.ShowDialog() == DialogResult.Continue;
             }
         }
 
-        private static int GetNumOfChances()
+        private static bool TryGetNumOfGuesses(out int i_NumOfGuesses)
         {
             FormStart formStart = new FormStart();
-            formStart.ShowDialog();
-            return formStart.NumOfChances;
+            i_NumOfGuesses = -1;
+
+            if (formStart.ShowDialog() == DialogResult.OK)
+            {
+                i_NumOfGuesses = formStart.NumOfChances;
+            }
+
+            return i_NumOfGuesses > 0;
         }
     }
 }

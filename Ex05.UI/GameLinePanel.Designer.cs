@@ -119,7 +119,6 @@
         public event EventHandler Submitted;
         public const int k_ScoreBoxSize = 50;
         private readonly List<Color> r_TurnGuess;
-        private readonly List<Color> r_correctGuess;
         private readonly FormColors r_FormColors;
         private ButtonColors buttonColors1;
         private ButtonColors buttonColors2;

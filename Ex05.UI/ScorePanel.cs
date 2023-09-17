@@ -12,8 +12,8 @@ namespace Ex05.UI
 {
     public partial class ScorePanel : UserControl
     {
-        private static readonly Color k_CowColor = Color.Yellow;
-        private static readonly Color k_BullColor = Color.Black;
+        private static readonly Color sr_CowColor = Color.Yellow;
+        private static readonly Color sr_BullColor = Color.Black;
 
         public class ScoreBoard
         {
@@ -26,7 +26,7 @@ namespace Ex05.UI
         public ScorePanel()
         {
             InitializeComponent();
-            m_pictureBoxes = new List<PictureBox>()
+            r_pictureBoxes = new List<PictureBox>()
             {
                 pictureBox1,
                 pictureBox2,
@@ -43,11 +43,11 @@ namespace Ex05.UI
 
             for (int i = 0; i < countBull; i++)
             {
-                m_pictureBoxes[i].BackColor = k_BullColor;
+                r_pictureBoxes[i].BackColor = sr_BullColor;
             }
             for (int i = countBull; i < countBull + countCow; i++)
             {
-                m_pictureBoxes[i].BackColor = k_CowColor;
+                r_pictureBoxes[i].BackColor = sr_CowColor;
             }
         }
     }

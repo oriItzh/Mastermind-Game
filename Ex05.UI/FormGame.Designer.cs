@@ -34,22 +34,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            //m_GamePin = new GamePin();
             SuspendLayout();
-            // 
-            // m_GamePin
-            // 
-            m_GamePin.Location = new Point(77, 42);
-            m_GamePin.Name = "m_GamePin";
-            m_GamePin.Size = new Size(718, 214);
-            m_GamePin.TabIndex = 0;
             // 
             // FormGame
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1224, 1388);
-            Controls.Add(m_GamePin);
             Name = "FormGame";
             Text = "FormGame";
             ResumeLayout(false);
@@ -60,7 +51,7 @@
         private const int k_PinLength = 4;
 
         private int m_CurrentRound;
-        private List<GameLinePanel> gameLinePanels;
-        private GamePin m_GamePin;
+        private readonly List<GameLinePanel> r_GameLinePanels;
+        private readonly GamePin r_GamePin;
     }
 }

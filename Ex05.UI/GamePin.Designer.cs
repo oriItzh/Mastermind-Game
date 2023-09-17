@@ -40,7 +40,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox1.BackColor = Color.Black;
             pictureBox1.Location = new Point(14, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(150, 150);
@@ -49,7 +49,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox2.BackColor = Color.Black;
             pictureBox2.Location = new Point(197, 22);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(150, 150);
@@ -58,7 +58,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox3.BackColor = Color.Black;
             pictureBox3.Location = new Point(380, 22);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(150, 150);
@@ -67,7 +67,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox4.BackColor = Color.Black;
             pictureBox4.Location = new Point(563, 22);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(150, 150);
@@ -99,7 +99,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-
         private List<Color> m_Pin;
         private List<PictureBox> m_VisualizablePin;
 

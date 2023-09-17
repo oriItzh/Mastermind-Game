@@ -28,6 +28,10 @@ namespace Ex05.UI
                 pictureBox3,
                 pictureBox4
             };
+            foreach (PictureBox pictureBox in m_VisualizablePin)
+            {
+                pictureBox.BackColor = Color.Black;
+            }
         }
 
         public void Display()
@@ -42,14 +46,6 @@ namespace Ex05.UI
                 {
                     m_VisualizablePin[i].BackColor = m_Pin[i];
                 }
-            }
-        }
-
-        public void Hide()
-        {
-            foreach (PictureBox pictureBox in Controls)
-            {
-                pictureBox.BackColor = Color.Black;
             }
         }
     }
