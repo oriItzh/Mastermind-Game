@@ -2,7 +2,6 @@
 {
     public partial class FormColors : Form
     {
-        public const int k_SizeOfButtonColors = 200;
         private Button m_lastClickedButton;
 
         public Button LastClickedButton
@@ -14,50 +13,50 @@
         }
         public FormColors()
         {
-            buttonColors = new List<ButtonColors>();
+            //buttonColors = new List<ButtonColors>();
             InitializeComponent();
-            CreateButtons();
-            SetButtonsColor();
+            //CreateButtons();
+            SetButtonsProperties();
         }
 
-        private void CreateButtons()
-        {
-            SuspendLayout();
-            int xPos = INITIAL_X_LOC;
-            int yPos = INITIAL_Y_LOC;
-            
-            for (int i = 0; i < NUMBER_OF_COLORS_IN_COLUMN; i++)
-            {
-                xPos = INITIAL_X_LOC;
-                for (int j = 0; j < NUMBER_OF_COLORS_IN_ROW; ++j)
-                {
-                    var bc = new ButtonColors();
-                    bc.Location = new Point(xPos, yPos);
-                    bc.Size = new Size(BUTTON_WIDTH, BUTTON_HEIGHT);
-                    bc.TabIndex = buttonColors.Count;
-                    bc.Name = String.Format("buttonColors{0}", buttonColors.Count);
-                    bc.UseVisualStyleBackColor = true;
-                    bc.SelectedButton = null;
+        //private void CreateButtons()
+        //{
+        //    SuspendLayout();
+        //    int xPos = k_InitialXLoc;
+        //    int yPos = k_InitialYLoc;
 
-                    xPos += BUTTON_WIDTH + BUTTON_HORIZONTAL_GAP;
+        //    for (int i = 0; i < NUMBER_OF_COLORS_IN_COLUMN; i++)
+        //    {
+        //        xPos = k_InitialXLoc;
+        //        for (int j = 0; j < k_NumOfColorsInARow; ++j)
+        //        {
+        //            var bc = new ButtonColors();
+        //            bc.Location = new Point(xPos, yPos);
+        //            bc.Size = new Size(BUTTON_WIDTH, BUTTON_HEIGHT);
+        //            bc.TabIndex = buttonColors.Count;
+        //            bc.Name = String.Format("buttonColors{0}", buttonColors.Count);
+        //            bc.UseVisualStyleBackColor = true;
+        //            bc.SelectedButton = null;
 
-                    buttonColors.Add(bc);
-                    Controls.Add(bc);
-                }
+        //            xPos += BUTTON_WIDTH + BUTTON_HORIZONTAL_GAP;
 
-                yPos += BUTTON_HEIGHT + BUTTON_VERTICAL_GAP;
-            }
-            ResumeLayout(false);
-        }
+        //            buttonColors.Add(bc);
+        //            Controls.Add(bc);
+        //        }
 
-        private void SetButtonsColor()
+        //        yPos += BUTTON_HEIGHT + BUTTON_VERTICAL_GAP;
+        //    }
+        //    ResumeLayout(false);
+        //}
+
+        private void SetButtonsProperties()
         {
             int i = 0;
-            foreach (var button in buttonColors)
+            foreach (Button button in Controls)
             {
                 button.BackColor = sr_optionalColors[i++];
                 button.Click += Button_Click;
-                Controls.Add(button);
+                //Controls.Add(button);
             }
         }
 
@@ -70,7 +69,7 @@
             }
             m_ColorResult = buttonColor.BackColor;
             buttonColor.Text = "✗";
-            buttonColor.Font = new Font("Arial", 45);
+            buttonColor.Font = new Font("Arial", 40);
             buttonColor.Enabled = false;
             m_lastClickedButton = buttonColor;
             DialogResult = DialogResult.OK;

@@ -58,11 +58,11 @@
             ClientSize = new Size(808, 353);
             Controls.Add(m_ButtonStart);
             Controls.Add(m_ButtonChancesCounter);
-            Cursor = Cursors.Arrow;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormStart";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bool Pgia";
             Load += FormStart_Load;
             ResumeLayout(false);

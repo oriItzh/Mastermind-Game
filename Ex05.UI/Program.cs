@@ -12,12 +12,26 @@ namespace Ex05.UI
             // see https://aka.ms/applicationconfiguration.
             //ApplicationConfiguration.Initialize();
             //Application.Run(new FormGame());
-            //new FormStart().ShowDialog();
-            var fr = new FormStart();
-            if (DialogResult.OK == fr.ShowDialog())
+            PlayNewGame();
+        }
+
+        private static void PlayNewGame()
+        {
+            bool wantsToPlay = true;
+            while (wantsToPlay)
             {
-                new FormGame(fr.NumOfChances).ShowDialog();
+                int numOfChances = GetNumOfChances();
+                FormGame formGame = new FormGame(numOfChances);
+                formGame.ShowDialog();
+                wantsToPlay = formGame.DialogResult == DialogResult.Continue;
             }
+        }
+
+        private static int GetNumOfChances()
+        {
+            FormStart formStart = new FormStart();
+            formStart.ShowDialog();
+            return formStart.NumOfChances;
         }
     }
 }

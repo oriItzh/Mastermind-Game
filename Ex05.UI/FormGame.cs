@@ -2,51 +2,71 @@ namespace Ex05.UI
 {
     public partial class FormGame : Form
     {
-
-        public struct BingoCount
+        public void CheckGuess(GameLinePanel i_GameLine)
         {
-            public int Bool { get; set; }
-            public int Pgia { get; set; }
-        }
+            List<Color> currentGuess = new List<Color>();
 
-        BingoCount CheckGuess(List<Color> guess)
-        {
-            if (guess.Count != r_GamePin.Length)
+            foreach (var VARIABLE in i_GameLine.Controls)
+            {
+                if (VARIABLE is ButtonColors buttonColors
+                    && buttonColors.Color != null)
+                {
+                    currentGuess.Add((Color)buttonColors.Color);
+                }
+            }
+
+            if (currentGuess.Count < k_PinLength)
             {
                 throw new ArgumentException("Must enter all 4 fields");
             }
 
-            var scoreCount = new BingoCount
+            for (int i = 0; i < currentGuess.Count; ++i)
             {
-                Bool = 0,
-                Pgia = 0
-            };
-
-            for (int i = 0; i < guess.Count; ++i)
-            {
-                if (guess[i] == r_GamePin[i])
+                if (currentGuess[i] == m_GamePin.Pin[i])
                 {
-                    scoreCount.Bool++;
+                    i_GameLine.ScorePanel.BoolPgia.Bool++;
                 }
-                else if (guess.Contains(guess[i]))
+                else if (currentGuess.Contains(currentGuess[i]))
                 {
-                    scoreCount.Pgia++;
+                    i_GameLine.ScorePanel.BoolPgia.Pgia++;
                 }
             }
-
-            return scoreCount;
         }
 
-        private const int k_PinLength = 4;
-        private Color[] r_GamePin;
-        private int m_CurrentRound;
+        //BingoCount CheckGuess(List<Color> guess)
+        //{
+        //    if (guess.Count != m_GamePin.Pin.Count)
+        //    {
+        //        throw new ArgumentException("Must enter all 4 fields");
+        //    }
+
+        //    var scoreCount = new BingoCount
+        //    {
+        //        Bool = 0,
+        //        Pgia = 0
+        //    };
+
+        //    for (int i = 0; i < guess.Count; ++i)
+        //    {
+        //        if (guess[i] == m_GamePin.Pin[i])
+        //        {
+        //            scoreCount.Bool++;
+        //        }
+        //        else if (guess.Contains(guess[i]))
+        //        {
+        //            scoreCount.Pgia++;
+        //        }
+        //    }
+
+        //    return scoreCount;
+        //}
 
         public FormGame(int numberOfGuesses)
         {
-            r_FormStart = new FormStart();
             gameLinePanels = new List<GameLinePanel>();
+            m_GamePin = new GamePin();
             int numberOfColors = FormColors.sr_optionalColors.Length;
-            CreateNewPin(numberOfColors);
+            SetGamePin(numberOfColors);
             m_CurrentRound = 0;
             InitializeComponent();
             SuspendLayout();
@@ -63,7 +83,7 @@ namespace Ex05.UI
             {
                 var gameLineControl = new GameLinePanel();
                 gameLineControl.Location = new Point(xLoc, yLoc);
-                gameLineControl.Name = String.Format("gameLineControl{0}", i + 1);
+                gameLineControl.Name = string.Format("gameLineControl{0}", i + 1);
                 gameLineControl.Size = new Size(k_ControlWidth, k_ControlHeight);
                 gameLineControl.TabIndex = i;
                 gameLineControl.Submitted += GameLine_Submitted;
@@ -84,34 +104,37 @@ namespace Ex05.UI
 
             if (CurrentTurn != null)
             {
-                //ComputeResult(CurrentTurn.TurnGuess);
-                m_CurrentRound++;
-                if (m_CurrentRound < gameLinePanels.Count)
+                try
                 {
-                    gameLinePanels[m_CurrentRound].EnableAllButtons();
+                    CheckGuess(CurrentTurn);
+
+                    m_CurrentRound++;
+                    if (m_CurrentRound < gameLinePanels.Count)
+                    {
+                        gameLinePanels[m_CurrentRound].EnableAllButtons();
+                    }
+                    else
+                    {
+                        //GameOver - To be implemented
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //GameOver
+                    //new FormError(ex.Message).ShowDialog(); To be Implemented
                 }
             }
+            m_GamePin.Display();    // Debugging purpose
         }
 
-        private void CreateNewPin(int numberOfColors)
+        private void SetGamePin(int numberOfColors)
         {
-            r_GamePin = new Color[k_PinLength];
-            var rnd = new Random();
-            var randomNumbers = Enumerable.Range(0, numberOfColors).OrderBy(x => rnd.Next()).Take(k_PinLength).ToList();
+            var random = new Random();
+            var randomNumbers = Enumerable.Range(0, numberOfColors).OrderBy(x => random.Next()).Take(k_PinLength).ToList();
             for (int i = 0; i < k_PinLength; ++i)
             {
-                r_GamePin[i] = FormColors.sr_optionalColors[randomNumbers[i]];
+                Color colorToAdd = (Color)FormColors.sr_optionalColors[randomNumbers[i]];
+                m_GamePin.Pin.Add(colorToAdd);
             }
-        }
-
-        private BingoCount OnSubmitClicked(List<Color> colors)
-        {
-            ++m_CurrentRound;
-            return CheckGuess(colors);
         }
     }
 }

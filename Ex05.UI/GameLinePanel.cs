@@ -108,14 +108,5 @@ namespace Ex05.UI
             }
         }
 
-        private void GameLinePanel_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonColors5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
