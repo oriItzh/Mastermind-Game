@@ -21,22 +21,20 @@ namespace Ex05.UI
 
         public void InitializeVisualPin()
         {
-            m_VisualizablePin = new List<PictureBox>();
-
-            foreach (var VARIABLE in Controls)
+            m_VisualizablePin = new List<PictureBox>
             {
-                if (VARIABLE is PictureBox PictureBox)
-                {
-                    m_VisualizablePin.Add(PictureBox);
-                }
-            }
+                pictureBox1,
+                pictureBox2,
+                pictureBox3,
+                pictureBox4
+            };
         }
 
         public void Display()
         {
             if (m_VisualizablePin.Count != m_Pin.Count)
             {
-                //Problem
+                throw new Exception("Invalid program state");
             }
             else
             {

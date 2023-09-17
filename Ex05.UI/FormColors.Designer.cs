@@ -20,14 +20,12 @@
             base.Dispose(disposing);
         }
 
-        private const int k_NumOfColorsInARow = 4;
-        private const int NUMBER_OF_COLORS_IN_COLUMN = 2;
-        private const int k_InitialXLoc = 15;
-        private const int k_InitialYLoc = 15;
-        private const int BUTTON_WIDTH = 40;
-        private const int BUTTON_HEIGHT = 40;
-        private const int BUTTON_HORIZONTAL_GAP = k_InitialXLoc;
-        private const int BUTTON_VERTICAL_GAP = k_InitialYLoc;
+        //private const int k_InitialXLoc = 15;
+        //private const int k_InitialYLoc = 15;
+        //private const int k_ButtonWidth = 40;
+        //private const int k_ButtonHeight = 40;
+        //private const int k_ButtonHorizontalGap = 15;
+        //private const int k_BottonVerticalGap = 15;
 
         #region Windows Form Designer generated code
 

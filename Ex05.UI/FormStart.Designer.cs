@@ -63,7 +63,7 @@
             MinimizeBox = false;
             Name = "FormStart";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Bool Pgia";
+            Text = "Bull Cow";
             Load += FormStart_Load;
             ResumeLayout(false);
         }

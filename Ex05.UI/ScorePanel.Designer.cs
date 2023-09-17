@@ -47,19 +47,10 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = SystemColors.ActiveBorder;
-            pictureBox2.Location = new Point(15, 85);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(50, 50);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
             // pictureBox3
             // 
             pictureBox3.BackColor = SystemColors.ActiveBorder;
-            pictureBox3.Location = new Point(85, 85);
+            pictureBox3.Location = new Point(15, 85);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(50, 50);
             pictureBox3.TabIndex = 0;
@@ -68,11 +59,20 @@
             // pictureBox4
             // 
             pictureBox4.BackColor = SystemColors.ActiveBorder;
-            pictureBox4.Location = new Point(85, 20);
+            pictureBox4.Location = new Point(85, 85);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(50, 50);
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = SystemColors.ActiveBorder;
+            pictureBox2.Location = new Point(85, 20);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(50, 50);
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
             // 
             // ScorePanel
             // 
@@ -97,7 +97,8 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private BingoCount m_BingoCount;
+        private List<PictureBox> m_pictureBoxes;
+        private readonly ScoreBoard r_ScoreBoard;
 
     }
 }

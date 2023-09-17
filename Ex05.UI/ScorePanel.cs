@@ -12,27 +12,42 @@ namespace Ex05.UI
 {
     public partial class ScorePanel : UserControl
     {
-        public class BingoCount
+        private static readonly Color k_CowColor = Color.Yellow;
+        private static readonly Color k_BullColor = Color.Black;
+
+        public class ScoreBoard
         {
-            public int Bool { get; set; }
-            public int Pgia { get; set; }
+            public int Bull { get; set; }
+            public int Cow { get; set; }
         }
 
-        public BingoCount BoolPgia { get;}
+        public ScoreBoard ScoreCounter => r_ScoreBoard;
 
         public ScorePanel()
         {
             InitializeComponent();
+            m_pictureBoxes = new List<PictureBox>()
+            {
+                pictureBox1,
+                pictureBox2,
+                pictureBox3,
+                pictureBox4
+            };
+            r_ScoreBoard = new ScoreBoard();
         }
 
         public void DisplayResult()
         {
-            int countBool = m_BingoCount.Bool;
-            int countPgia = m_BingoCount.Pgia;
+            int countBull = r_ScoreBoard.Bull;
+            int countCow = r_ScoreBoard.Cow;
 
-            for (int i = 0; i < countBool + countPgia; i++)
+            for (int i = 0; i < countBull; i++)
             {
-                Controls[i].BackColor = i < countBool ? Color.Black : Color.Yellow;
+                m_pictureBoxes[i].BackColor = k_BullColor;
+            }
+            for (int i = countBull; i < countBull + countCow; i++)
+            {
+                m_pictureBoxes[i].BackColor = k_CowColor;
             }
         }
     }

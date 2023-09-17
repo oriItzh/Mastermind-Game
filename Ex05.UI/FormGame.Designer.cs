@@ -34,7 +34,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            m_GamePin = new GamePin();
+            //m_GamePin = new GamePin();
             SuspendLayout();
             // 
             // m_GamePin

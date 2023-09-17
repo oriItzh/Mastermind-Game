@@ -35,8 +35,6 @@
             buttonColors3 = new ButtonColors();
             buttonColors4 = new ButtonColors();
             scorePanel1 = new ScorePanel();
-            errorProvider1 = new ErrorProvider(components);
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // buttonSubmit
@@ -98,7 +96,6 @@
             // 
             // errorProvider1
             // 
-            errorProvider1.ContainerControl = this;
             // 
             // GameLinePanel
             // 
@@ -112,19 +109,17 @@
             Controls.Add(buttonSubmit);
             Name = "GameLinePanel";
             Size = new Size(997, 180);
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        //public delegate FormGame.BingoCount checkGuess(List<Color> guess);
+        //public delegate FormGame.ScoreBoard checkGuess(List<Color> guess);
 
         public event EventHandler Submitted;
         public const int k_ScoreBoxSize = 50;
-        private List<Color> m_TurnGuess;
-        // TODO export to another class
-        private List<Color> m_correctGuess;
+        private readonly List<Color> r_TurnGuess;
+        private readonly List<Color> r_correctGuess;
         private readonly FormColors r_FormColors;
         private ButtonColors buttonColors1;
         private ButtonColors buttonColors2;
@@ -132,8 +127,7 @@
         private ButtonColors buttonColors4;
         private Button buttonSubmit;
         private ScorePanel scorePanel1;
-        private ErrorProvider errorProvider1;
 
-        public ScorePanel ScorePanel { get; }
+        public ScorePanel ScorePanel => scorePanel1;
     }
 }

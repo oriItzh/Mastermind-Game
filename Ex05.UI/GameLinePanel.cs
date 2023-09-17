@@ -14,8 +14,9 @@ namespace Ex05.UI
     {
         public GameLinePanel()
         {
-            //m_correctGuess = correctGuess;
+            //r_correctGuess = correctGuess;
             r_FormColors = new FormColors();
+            r_TurnGuess = new List<Color>();
             InitializeComponent();
             SetButtonColors();
         }
@@ -28,12 +29,14 @@ namespace Ex05.UI
                 DisableAllButtons();
                 OnSubmitted();
             }
+            else
+            {
+                // TODO SHOW MESSAGE ERROR 
+            }
         }
 
         private bool UpdateTurnGuess()
         {
-            m_TurnGuess = new List<Color>();
-
             foreach (Control control in Controls)
             {
                 if (control is ButtonColors buttonColors)
@@ -42,7 +45,7 @@ namespace Ex05.UI
                     {
                         return false;
                     }
-                    m_TurnGuess.Add((Color)buttonColors.Color);
+                    r_TurnGuess.Add((Color)buttonColors.Color);
                 }
             }
 

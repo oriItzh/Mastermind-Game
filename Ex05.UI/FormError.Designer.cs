@@ -37,7 +37,8 @@
             // 
             // buttonOk
             // 
-            buttonOk.Location = new Point(579, 350);
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonOk.Location = new Point(410, 173);
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(204, 88);
             buttonOk.TabIndex = 0;
@@ -50,9 +51,11 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(254, 145);
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(12, 24);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(526, 55);
+            textBox1.Size = new Size(602, 143);
             textBox1.TabIndex = 1;
             // 
             // FormError
@@ -60,11 +63,12 @@
             AcceptButton = buttonOk;
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            CancelButton = buttonOk;
+            ClientSize = new Size(628, 276);
             Controls.Add(textBox1);
             Controls.Add(buttonOk);
             Name = "FormError";
-            Text = "FormError";
+            Text = "Error";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

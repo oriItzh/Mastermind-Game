@@ -25,26 +25,26 @@
         //    int xPos = k_InitialXLoc;
         //    int yPos = k_InitialYLoc;
 
-        //    for (int i = 0; i < NUMBER_OF_COLORS_IN_COLUMN; i++)
+        //    for (int i = 0; i < k_NumOfColorsInARow; i++)
         //    {
         //        xPos = k_InitialXLoc;
         //        for (int j = 0; j < k_NumOfColorsInARow; ++j)
         //        {
         //            var bc = new ButtonColors();
         //            bc.Location = new Point(xPos, yPos);
-        //            bc.Size = new Size(BUTTON_WIDTH, BUTTON_HEIGHT);
+        //            bc.Size = new Size(k_ButtonWidth, k_ButtonHeight);
         //            bc.TabIndex = buttonColors.Count;
         //            bc.Name = String.Format("buttonColors{0}", buttonColors.Count);
         //            bc.UseVisualStyleBackColor = true;
         //            bc.SelectedButton = null;
 
-        //            xPos += BUTTON_WIDTH + BUTTON_HORIZONTAL_GAP;
+        //            xPos += k_ButtonWidth + k_ButtonHorizontalGap;
 
         //            buttonColors.Add(bc);
         //            Controls.Add(bc);
         //        }
 
-        //        yPos += BUTTON_HEIGHT + BUTTON_VERTICAL_GAP;
+        //        yPos += k_ButtonHeight + k_BottonVerticalGap;
         //    }
         //    ResumeLayout(false);
         //}

@@ -6,9 +6,9 @@ namespace Ex05.UI
         {
             List<Color> currentGuess = new List<Color>();
 
-            foreach (var VARIABLE in i_GameLine.Controls)
+            foreach (var control in i_GameLine.Controls)
             {
-                if (VARIABLE is ButtonColors buttonColors
+                if (control is ButtonColors buttonColors
                     && buttonColors.Color != null)
                 {
                     currentGuess.Add((Color)buttonColors.Color);
@@ -20,48 +20,48 @@ namespace Ex05.UI
                 throw new ArgumentException("Must enter all 4 fields");
             }
 
-            for (int i = 0; i < currentGuess.Count; ++i)
+            for (int i = 0; i < currentGuess.Count; i++)
             {
                 if (currentGuess[i] == m_GamePin.Pin[i])
                 {
-                    i_GameLine.ScorePanel.BoolPgia.Bool++;
+                    i_GameLine.ScorePanel.ScoreCounter.Bull++;
                 }
-                else if (currentGuess.Contains(currentGuess[i]))
+                else if (m_GamePin.Pin.Contains(currentGuess[i]))
                 {
-                    i_GameLine.ScorePanel.BoolPgia.Pgia++;
+                    i_GameLine.ScorePanel.ScoreCounter.Cow++;
                 }
             }
         }
 
-        //BingoCount CheckGuess(List<Color> guess)
+        //ScoreBoard CheckGuess(List<Color> guess)
         //{
         //    if (guess.Count != m_GamePin.Pin.Count)
         //    {
         //        throw new ArgumentException("Must enter all 4 fields");
         //    }
 
-        //    var scoreCount = new BingoCount
+        //    var scoreCount = new ScoreBoard
         //    {
-        //        Bool = 0,
-        //        Pgia = 0
+        //        Bull = 0,
+        //        Cow = 0
         //    };
 
         //    for (int i = 0; i < guess.Count; ++i)
         //    {
         //        if (guess[i] == m_GamePin.Pin[i])
         //        {
-        //            scoreCount.Bool++;
+        //            scoreCount.Bull++;
         //        }
         //        else if (guess.Contains(guess[i]))
         //        {
-        //            scoreCount.Pgia++;
+        //            scoreCount.Cow++;
         //        }
         //    }
 
         //    return scoreCount;
         //}
 
-        public FormGame(int numberOfGuesses)
+        public FormGame(int i_NumberOfGuesses)
         {
             gameLinePanels = new List<GameLinePanel>();
             m_GamePin = new GamePin();
@@ -70,7 +70,7 @@ namespace Ex05.UI
             m_CurrentRound = 0;
             InitializeComponent();
             SuspendLayout();
-            CreateGameLines(numberOfGuesses);
+            CreateGameLines(i_NumberOfGuesses);
             ResumeLayout(false);
         }
 
@@ -107,8 +107,8 @@ namespace Ex05.UI
                 try
                 {
                     CheckGuess(CurrentTurn);
-
                     m_CurrentRound++;
+                    CurrentTurn.ScorePanel.DisplayResult();
                     if (m_CurrentRound < gameLinePanels.Count)
                     {
                         gameLinePanels[m_CurrentRound].EnableAllButtons();
@@ -120,7 +120,7 @@ namespace Ex05.UI
                 }
                 catch (Exception ex)
                 {
-                    //new FormError(ex.Message).ShowDialog(); To be Implemented
+                    new FormError(ex.Message).ShowDialog(); //To be Implemented
                 }
             }
             m_GamePin.Display();    // Debugging purpose
@@ -134,6 +134,7 @@ namespace Ex05.UI
             {
                 Color colorToAdd = (Color)FormColors.sr_optionalColors[randomNumbers[i]];
                 m_GamePin.Pin.Add(colorToAdd);
+                
             }
         }
     }
