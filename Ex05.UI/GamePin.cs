@@ -28,10 +28,6 @@ namespace Ex05.UI
                 pictureBox3,
                 pictureBox4
             };
-            foreach (PictureBox pictureBox in m_VisualizablePin)
-            {
-                pictureBox.BackColor = Color.Black;
-            }
         }
 
         public void Display()

@@ -36,11 +36,19 @@
         {
             SuspendLayout();
             // 
+            // gamePin1
+            // 
+            m_GamePin.Location = new Point(67, 59);
+            m_GamePin.Name = "gamePin1";
+            m_GamePin.Size = new Size(746, 190);
+            m_GamePin.TabIndex = 0;
+            // 
             // FormGame
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1224, 1388);
+            Controls.Add(m_GamePin);
             Name = "FormGame";
             Text = "FormGame";
             ResumeLayout(false);
@@ -52,6 +60,6 @@
 
         private int m_CurrentRound;
         private readonly List<GameLinePanel> r_GameLinePanels;
-        private readonly GamePin r_GamePin;
+        private GamePin m_GamePin;
     }
 }

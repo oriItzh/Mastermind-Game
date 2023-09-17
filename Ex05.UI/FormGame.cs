@@ -24,11 +24,11 @@ namespace Ex05.UI
 
             for (int i = 0; i < currentGuess.Count; i++)
             {
-                if (currentGuess[i] == r_GamePin.Pin[i])
+                if (currentGuess[i] == m_GamePin.Pin[i])
                 {
                     i_GameLine.ScorePanel.ScoreCounter.Bull++;
                 }
-                else if (r_GamePin.Pin.Contains(currentGuess[i]))
+                else if (m_GamePin.Pin.Contains(currentGuess[i]))
                 {
                     i_GameLine.ScorePanel.ScoreCounter.Cow++;
                 }
@@ -38,7 +38,7 @@ namespace Ex05.UI
         public FormGame(int i_NumberOfGuesses)
         {
             r_GameLinePanels = new List<GameLinePanel>();
-            r_GamePin = new GamePin();
+            m_GamePin = new GamePin();
             int numberOfColors = FormColors.sr_optionalColors.Length;
             SetGamePin(numberOfColors);
             m_CurrentRound = 0;
@@ -46,6 +46,7 @@ namespace Ex05.UI
             SuspendLayout();
             CreateGameLines(i_NumberOfGuesses);
             ResumeLayout(false);
+            m_GamePin.Display();
         }
 
         private void CreateGameLines(int numberOfGuesses)
@@ -113,7 +114,7 @@ namespace Ex05.UI
 
         private void DoWhenGameEnds(string i_Message)
         {
-            r_GamePin.Display();
+            m_GamePin.Display();
             FormNewGame formNewGame = new FormNewGame(i_Message);
 
             if (formNewGame.ShowDialog() == DialogResult.Yes)
@@ -140,7 +141,7 @@ namespace Ex05.UI
             for (int i = 0; i < k_PinLength; ++i)
             {
                 Color colorToAdd = (Color)FormColors.sr_optionalColors[randomNumbers[i]];
-                r_GamePin.Pin.Add(colorToAdd);
+                m_GamePin.Pin.Add(colorToAdd);
 
             }
         }
