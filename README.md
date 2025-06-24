@@ -1,6 +1,6 @@
 # Mastermind Game – Windows Forms Application
 
-This is a C# implementation of the classic *Mastermind* game developed as a Windows Forms desktop application. The project includes a graphical user interface (GUI) where players can guess a hidden color sequence and receive feedback after each attempt.
+This is a C# implementation of the classic *Mastermind* game ("בול פגיעה") developed as a Windows Forms desktop application. The project includes a graphical user interface (GUI) where players can guess a hidden color sequence and receive feedback after each attempt.
 
 ## 🎮 Features
 
