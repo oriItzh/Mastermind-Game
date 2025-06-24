@@ -46,7 +46,6 @@ namespace Ex05.UI
             SuspendLayout();
             CreateGameLines(i_NumberOfGuesses);
             ResumeLayout(false);
-            m_GamePin.Display();
         }
 
         private void CreateGameLines(int numberOfGuesses)
