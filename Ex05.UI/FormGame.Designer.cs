@@ -36,20 +36,23 @@
         {
             SuspendLayout();
             // 
-            // gamePin1
+            // m_GamePin
             // 
-            m_GamePin.Location = new Point(67, 59);
-            m_GamePin.Name = "gamePin1";
-            m_GamePin.Size = new Size(746, 190);
+            m_GamePin.Location = new Point(100, 75);
+            m_GamePin.Name = "m_GamePin";
+            m_GamePin.Size = new Size(718, 185);
             m_GamePin.TabIndex = 0;
             // 
             // FormGame
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1224, 1388);
             Controls.Add(m_GamePin);
             Name = "FormGame";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormGame";
             ResumeLayout(false);
         }

@@ -37,7 +37,7 @@
             // buttonYes
             // 
             buttonYes.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonYes.Location = new Point(430, 283);
+            buttonYes.Location = new Point(744, 135);
             buttonYes.Name = "buttonYes";
             buttonYes.Size = new Size(148, 73);
             buttonYes.TabIndex = 0;
@@ -48,7 +48,7 @@
             // buttonNo
             // 
             buttonNo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonNo.Location = new Point(611, 283);
+            buttonNo.Location = new Point(925, 135);
             buttonNo.Name = "buttonNo";
             buttonNo.Size = new Size(148, 73);
             buttonNo.TabIndex = 0;
@@ -70,7 +70,7 @@
             textBoxFixedMssg.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBoxFixedMssg.Location = new Point(12, 19);
             textBoxFixedMssg.Name = "textBoxFixedMssg";
-            textBoxFixedMssg.Size = new Size(748, 55);
+            textBoxFixedMssg.Size = new Size(1062, 55);
             textBoxFixedMssg.TabIndex = 2;
             // 
             // FormNewGame
@@ -79,7 +79,7 @@
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = buttonNo;
-            ClientSize = new Size(776, 367);
+            ClientSize = new Size(1090, 219);
             Controls.Add(textBoxFixedMssg);
             Controls.Add(labelUserMsg);
             Controls.Add(buttonNo);
@@ -87,6 +87,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormNewGame";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormNewGame";
             ResumeLayout(false);
             PerformLayout();
